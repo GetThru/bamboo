@@ -35,6 +35,16 @@ defmodule Bamboo.MailgunHelper do
   end
 
   @doc """
+  Establish that the rendered template will be used as the text part of the message
+
+  More details about templates can be found in the
+  [Templates section of the Mailgun documentation](https://documentation.mailgun.com/en/latest/user_manual.html#templates).
+  """
+  def template_text(email) do
+    Email.put_private(email, :"t:text", "yes")
+  end
+
+  @doc """
   When sending an email with `Bamboo.MailgunHelper.template/2` you can
   replace a handlebars variables using this function.
 
